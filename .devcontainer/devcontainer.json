@@ -1,21 +1,29 @@
 {
-  "name": "Android & Python Workspace",
+  "name": "Secure Android & VCS Codespace",
   "image": "mcr.microsoft.com/devcontainers/universal:2",
   "features": {
     "ghcr.io/devcontainers/features/java:1": {
       "version": "17"
     },
-    "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.11"
-    }
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   },
-  "postCreateCommand": "bash .devcontainer/setup-android.sh",
+  "postCreateCommand": "bash .devcontainer/setup-env.sh",
   "customizations": {
     "vscode": {
       "extensions": [
         "ms-python.python",
         "vscjava.vscode-java-pack"
       ]
+    }
+  },
+  "portsAttributes": {
+    "5555": {
+      "label": "ADB Daemon",
+      "onAutoForward": "silent"
+    },
+    "6080": {
+      "label": "noVNC Stream",
+      "onAutoForward": "notify"
     }
   }
 }
